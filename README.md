@@ -6,7 +6,7 @@ Enjoy!
 ### Requirements
 
 - [Node.js](http://nodejs.org/)
-- [Gulp.js](http://gruntjs.com/)
+- [Gulp.js](http://gulpjs.com/)
 - [Bower](http://bower.io/)
 
 ### Getting things running locally
@@ -14,7 +14,8 @@ Enjoy!
     $ cd itunes-app
     $ npm install
     $ bower install
-    $ gulp
+    // Then to serve up the application
+    $ gulp serve
 
 If you’ve got questions, feel free to shoot me an email [sebastianwkey@gmail.com](sebastianwkey@gmail.com).
 
