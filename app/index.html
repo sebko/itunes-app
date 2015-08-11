@@ -1,0 +1,85 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Itunes Search</title>
+
+    <!-- build:css styles/vendor.css -->
+
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+  </head>
+  <body ng-app="ShineApp" ng-controller="MainController as itunes">
+    <div class="container">
+      <div class="header">
+        <h3 class="text-muted">Itunes Search</h3>
+      </div>
+
+      <div class="jumbotron">
+        <!-- form is only submitted if the form is valid (note input[name='artist'] is required) -->
+        <form name="artistSearch" ng-submit="artistSearch.$valid && itunes.searchArtist(query)" novalidate>
+          <div class="search-container">
+            <!-- Set the input to autofocus so user does not have to do an extra click to focus the input area -->
+            <input class="search-input" type="text" placeholder="Search by Artist" ng-model="query.artist" /required autofocus>
+            <button class="search-btn">Search</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="row itunes-results">
+        <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Track Name</th>
+                  <th>Artist</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="result in itunes.songs">
+                  <td>{{result.trackName}}</td>
+                  <td>{{result.artistName}}</td>
+                  <!--Using angular's currency filter to convert number
+                  to a pretty currency format -->
+                  <td>{{result.trackPrice | currency}}</td>
+                </tr>
+              </tbody>
+        </table>
+      </div>
+
+      <div class="footer">
+        <span>Sebastian Key | </span>
+        <a href="//github.com/sebko/itunes-app" target="_blank">Source Code</a>
+      </div>
+    </div>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    
+    <!-- build:js scripts/plugins.js -->
+    <!-- endbuild -->
+    
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/app.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
